@@ -30,12 +30,14 @@ Os dados disponíveis abrangem o período de:
 
 ## Arquitetura
 
+```mermaid
 flowchart TD
-    A[Arquivos de origem] --> B[Cloud Storage - AWS S3]
-    B --> C[Bronze - Delta Lake]
-    C --> D[Silver - Delta Lake]
-    D --> E[Gold - Delta Lake]
-    E --> F[Power BI]
+    A["Arquivos de origem"] --> B["Cloud Storage - AWS S3"]
+    B --> C["Bronze - Delta Lake"]
+    C --> D["Silver - Delta Lake"]
+    D --> E["Gold - Delta Lake"]
+    E --> F["Power BI"]
+```
 
 As tabelas das camadas Bronze, Silver e Gold são armazenadas no formato Delta Lake e organizadas no Unity Catalog. Essa estrutura garante maior confiabilidade no processamento, controle de esquema, versionamento dos dados e suporte a futuras cargas incrementais.
 
@@ -83,22 +85,24 @@ raw/
 
 Essa separação facilita a ingestão independente dos dados de clientes e transações nas respectivas pipelines Bronze.
 
-![s3.png](/Workspace/Users/cecilia.perles@gmail.com/Customer-Analytics/imagens/s3.png)
+![s3.png](./imagens/s3.png)
 
 ### Fluxo de ingestão
 
+```mermaid
 flowchart LR
     subgraph Customers
-        A[S3 raw/customers] --> B[Bronze customers]
-        B --> C[Silver customers]
-        C --> D[Gold customers]
+        A["S3 raw/customers"] --> B["Bronze customers"]
+        B --> C["Silver customers"]
+        C --> D["Gold customers"]
     end
 
     subgraph Orders
-        E[S3 raw/orders] --> F[Bronze orders]
-        F --> G[Silver orders]
-        G --> H[Gold orders]
+        E["S3 raw/orders"] --> F["Bronze orders"]
+        F --> G["Silver orders"]
+        G --> H["Gold orders"]
     end
+```
 
 ## Estrutura do projeto no Databricks
 
@@ -151,7 +155,7 @@ customer_analytics.gold.customers
 customer_analytics.gold.orders
 ```
 
-![catalog.png](/Workspace/Users/cecilia.perles@gmail.com/Customer-Analytics/imagens/catalog.png)
+![catalog.png](./imagens/catalog.png)
 
 ## Camadas de dados
 
@@ -294,7 +298,7 @@ A pipeline separa o processamento de `customers` e `orders`, mas mantém as depe
 
 **OBS.:** Criei a task para atualizar PowerBI, entretanto não consegui salvar em razão da necessidade de conta premium.
 
-![pipeline.png](/Workspace/Users/cecilia.perles@gmail.com/Customer-Analytics/imagens/pipeline.png)
+![pipeline.png](./imagens/pipeline.png)
 
 ## Consultas analíticas
 
@@ -338,7 +342,7 @@ Objetivo:
 
 Menos da metade da base cadastrada realizou transações no período analisado. A principal oportunidade é ativar os 522 clientes que ainda não transacionaram.
 
-![page1.png](/Workspace/Users/cecilia.perles@gmail.com/Customer-Analytics/imagens/page1.png)
+![page1.png](./imagens/page1.png)
 
 ---
 
@@ -396,7 +400,7 @@ Objetivo:
 
 Os clientes ativos apresentam alta recorrência, com média de nove transações por cliente no período. A maior parte realizou entre seis e dez transações e utilizou as três categorias.
 
-![page2.png](/Workspace/Users/cecilia.perles@gmail.com/Customer-Analytics/imagens/page2.png)
+![page2.png](./imagens/page2.png)
 
 ---
 
@@ -443,7 +447,7 @@ Objetivo:
 
 Foram movimentados aproximadamente R$ 644,9 mil, com R$ 25,5 mil concedidos em cashback. O benefício representou 3,9% do valor transacionado, enquanto o ticket médio permaneceu próximo de R$ 168.
 
-![page3.png](/Workspace/Users/cecilia.perles@gmail.com/Customer-Analytics/imagens/page3.png)
+![page3.png](./imagens/page3.png)
 
 ## Principais conclusões
 
