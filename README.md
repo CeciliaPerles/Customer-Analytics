@@ -490,6 +490,6 @@ customer_analytics_pipeline
 - tabelas Delta no Unity Catalog;
 - job de orquestração;
 - consultas analíticas;
-- dashboard Power BI;
+- [dashboard Power BI](https://app.powerbi.com/view?r=eyJrIjoiY2Y5YTFjMzMtZmIyZC00NzNlLWFlZTEtNzQzZDI5YzM1NDEyIiwidCI6IjdiNmY5NzY1LTYzZGMtNDhjOS1iNGE1LTViNTlkYTQ0NDdiNyJ9);
 - documentação técnica e funcional;
 - README do projeto.
