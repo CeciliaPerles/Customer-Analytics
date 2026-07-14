@@ -109,6 +109,7 @@ flowchart LR
 ```text
 customer-analytics/
 ├── imagens/
+├── power-bi/
 ├── prova-tecnica/
 │   ├── prova-tecnica
 ├── pipelines/
